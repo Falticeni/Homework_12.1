@@ -1,0 +1,188 @@
+﻿@using MyMVCApplication.Models;
+@model MyMVCApplication.Models.Student
+
+@{
+    ViewBag.Title = "HTTML Helpers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>HTTML Helpers: </h1>
+<br />
+<br />
+
+<form>
+    <strong>TextBox: </strong>
+    <ul> @Html.TextBox("myTextBox", "This is value", new { @class = "form-control" })</ul>
+</form>
+<br />
+
+<form>
+    <strong>TextBoxFor: </strong>
+    <ul>@Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })</ul>
+</form>
+<br />
+
+<form>
+    <strong>TextArea: </strong>
+    <ul> @Html.TextArea("myTextArea", "Text Area", new { @class = "form-control" })</ul>
+</form>
+<br />
+<form>
+    <strong>TextAreFor: </strong>
+    <ul>@Html.TextAreaFor(s => s.Id, new { @class = "form-control" })</ul>
+</form>
+<br />
+
+<form>
+    <strong>Checkbox: </strong>
+    <ul> @Html.CheckBox("isNewlyEnrolled", true)</ul>
+</form>
+<br />
+<form>
+    <strong>CheckboxFor: </strong>
+    <ul>@Html.CheckBoxFor(m => m.isNewlyEnrolled)</ul>
+</form>
+<br />
+
+<form>
+    <strong>RadioButton: </strong>
+    <ul>
+        Male:   @Html.RadioButton("Gender", "Male")
+        Female: @Html.RadioButton("Gender", "Female")
+    </ul>
+</form>
+<br />
+<form>
+    <strong>RadioButtonFor: </strong>
+    <ul>
+        @Html.RadioButtonFor(m => m.Gender, "Male")
+        @Html.RadioButtonFor(m => m.Gender, "Female")
+    </ul>
+</form>
+<br />
+
+<form>
+    <strong>DropDownList: </strong>
+    <ul>
+        @Html.DropDownList("StudentGender",
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender",
+                    new { @class = "form-control" })
+    </ul>
+</form>
+<br />
+<form>
+    <strong>DropDownListFor: </strong>
+    <ul>
+        @Html.DropDownListFor(m => m.Gender,
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender")
+    </ul>
+</form>
+<br />
+
+<form>
+    <strong>Hidden: </strong>
+    <ul>@Html.Hidden("Password")</ul>
+</form>
+<br />
+<form>
+    <strong>HiddenFor: </strong>
+    <ul>@Html.HiddenFor(m => m.Password)</ul>
+</form>
+<br />
+
+<form>
+    <strong>Hidden: </strong>
+    <ul>@Html.Password("Password")</ul>
+</form>
+<br />
+<form>
+    <strong>HiddenFor: </strong>
+    <ul>@Html.PasswordFor(m => m.Password)</ul>
+</form>
+<br />
+
+<form>
+    <strong>Display: </strong>
+    <ul>@Html.Display("StudentName")</ul>
+</form>
+<br />
+<form>
+    <strong>DisplayFor: </strong>
+    <ul>@Html.DisplayFor(m => m.StudentName)</ul>
+</form>
+<br />
+
+<form>
+    <strong>Label: </strong>
+    <ul>@Html.Label("StudentName")</ul>
+</form>
+<br />
+<form>
+    <strong>LabelFor: </strong>
+    <ul>@Html.LabelFor(m => m.StudentName)</ul>
+</form>
+<br />
+
+<form>
+    <strong>Editor: </strong>
+    <p>StudentId:      @Html.Editor("Id")</p>
+    <p>Student Name:@Html.Editor("StudentName")</p>
+    <p>Age:            @Html.Editor("Age")</p>
+    <p>Password:       @Html.Editor("Password")</p>
+    <p>isNewlyEnrolled: @Html.Editor("isNewlyEnrolled")</p>
+    <p>Gender:         @Html.Editor("Gender")</p>
+</form>
+<br />
+
+<form>
+    <strong>Editor: </strong>
+    <p>StudentId:      @Html.EditorFor(m => m.Id)</p>
+    <p>Student Name:@Html.EditorFor(m => m.StudentName)</p>
+    <p>Age:            @Html.EditorFor(m => m.Age)</p>
+    <p>Password:       @Html.EditorFor(m => m.Password)</p>
+    <p>isNewlyEnrolled: @Html.EditorFor(m => m.isNewlyEnrolled)</p>
+    <p>Gender:         @Html.EditorFor(m => m.Gender)</p>
+</form>
+<br />
+
+<form>
+    <strong>ValidationMessage: </strong>
+    <ul>
+        @Html.Editor("StudentName")
+        @Html.ValidationMessage("StudentName", "", new { @class = "text-danger" })
+    </ul>
+</form>
+<br />
+<form>
+    <strong>ValidationMessageFor: </strong>
+    <ul>
+        @Html.EditorFor(m => m.Age)
+        @Html.ValidationMessage("Age", "Please enter student's age.", new { @class = "text-danger" })
+    </ul>
+</form>
+<br />
+
+<form>
+    <strong>ValidationMessage: </strong>
+    <ul>
+        @Html.Editor("StudentName")
+        @Html.ValidationMessage("StudentName", "", new { @class = "text-danger" })
+    </ul>
+</form>
+<br />
+
+<form>
+    <strong>ValidationMessageFor: </strong>
+    <ul>
+        @Html.EditorFor(m => m.Age)
+        @Html.ValidationMessage("Age", "Please enter student's age.", new { @class = "text-danger" })
+    </ul>
+</form>
+<br />
+
+<form>
+    <strong>ValidationSummary: </strong>
+    <ul>@Html.ValidationSummary(false, "", new { @class = "text-danger" })</ul>
+</form>
