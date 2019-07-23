@@ -1,16 +1,19 @@
-﻿@model MyMVCApplication.Models.Student
+﻿@using MyMVCApplication.Models;
+
+@model MyMVCApplication.Models.Student
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Student</h4>
         <hr />
@@ -43,4 +46,161 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+
 </div>
+<br />
+<br />
+
+<table>
+    <tr>
+        <td>
+            <strong>HTML Helpers: </strong>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBox("myTextBox", "This is value", new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextArea("myTextArea", "Text Area", new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextAreaFor(s => s.Id, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td>
+            @Html.CheckBox("isNewlyEnrolled", true)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.CheckBoxFor(m => m.isNewlyEnrolled)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Male:   @Html.RadioButton("Gender", "Male")
+            Female: @Html.RadioButton("Gender", "Female")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.RadioButtonFor(m => m.Gender, "Male")
+            @Html.RadioButtonFor(m => m.Gender, "Female")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DropDownList("StudentGender",
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender",
+                    new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DropDownListFor(m => m.Gender,
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Hidden("Password")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.HiddenFor(m => m.Password)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Password("Password")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.PasswordFor(m => m.Password)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Display("StudentName")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(m => m.StudentName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("StudentName")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(m => m.StudentName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            StudentId:      @Html.Editor("Id")
+            Student Name:   @Html.Editor("StudentName")
+            Age:            @Html.Editor("Age")
+            Password:       @Html.Editor("Password")
+            isNewlyEnrolled: @Html.Editor("isNewlyEnrolled")
+            Gender:         @Html.Editor("Gender")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            StudentId:      @Html.EditorFor(m => m.Id)
+            Student Name:   @Html.EditorFor(m => m.StudentName)
+            Age:            @Html.EditorFor(m => m.Age)
+            Password:       @Html.EditorFor(m => m.Password)
+            isNewlyEnrolled: @Html.EditorFor(m => m.isNewlyEnrolled)
+            Gender:         @Html.EditorFor(m => m.Gender)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Editor("StudentName") <br />
+            @Html.ValidationMessage("StudentName", "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(m => m.Age) <br />
+            @Html.ValidationMessage("Age", "Please enter student's age.", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(m => m.StudentName) <br />
+            @Html.ValidationMessageFor(m => m.StudentName, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Total Students:</label>  @ViewBag.TotalStudents
+        </td>
+    </tr>
+</table>

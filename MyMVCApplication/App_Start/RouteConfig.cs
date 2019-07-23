@@ -11,14 +11,14 @@ namespace MyMVCApplication
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-         routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-         routes.MapRoute(
-                name: "Student",
-                url: "student/{id}/{name}/{standardId}",
-                defaults: new { controller = "Student", action = "Index", id = UrlParameter.Optional, name = UrlParameter.Optional, standardId = UrlParameter.Optional },
-                constraints: new { id = @"\d+" }
-    );
+            routes.MapRoute(
+                   name: "Student",
+                   url: "student/{id}/{name}/{standardId}",
+                   defaults: new { controller = "Student", action = "Index", id = UrlParameter.Optional, name = UrlParameter.Optional, standardId = UrlParameter.Optional },
+                   constraints: new { id = @"\d+" }
+       );
 
             routes.MapRoute(
                 name: "Default",
